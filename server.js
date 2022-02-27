@@ -2,19 +2,27 @@
 const express = require("express")
 const app = express()
 
-
+// set up host name and port
 const hostname = 'localhost';
 const port = 3000;
 
+// set view engine to ejs to read the ejs files
 app.set("view engine", "ejs")
 
+// on first load run the index.ejs file and create a variable to send down
 app.get("/", (req, res) => {
     console.log("here")
-    // can put methods like send,status,json on server 
     res.render('index', {
         text: "world"
     })
 })
+
+// import the user router from users.js
+const userRouter = require('./routes/users')
+
+// link the userRouter to the app. Enter in what directory to listen for
+app.use('/users', userRouter)
+
 
 
 app.listen(port, hostname, () => {
