@@ -9,17 +9,34 @@ router.use(logger)
 
 // GET for just '/users'
 router.get('/', (req, res) => {
+    // users?name=bob
+    console.log(req.query.name);
     res.send("User List")
 })
 
-// GET for 'users/new'
+// GET for 'users/new'. render the new.ejs file and set variable firstName
 router.get('/new', (req, res) => {
-    res.send("User new form")
+    res.render('users/new', {
+        firstName: "test"
+    })
 })
 
 // POST
+//push user to array
 router.post('/', (req, res) => {
-    res.send("Create User")
+    const isValid = true;
+    if (isValid) {
+        users.push({
+            firstName: req.body.firstName
+        })
+        res.redirect(`users/${users.length-1}`)
+    } else {
+        console.log("Error")
+        res.render("users/new", {
+            firstName: req.body.firstName
+        })
+    }
+    res.send('hi')
 })
 
 // chain routes to individual user.  GET , PUT, DELETE

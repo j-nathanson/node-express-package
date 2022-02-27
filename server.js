@@ -12,7 +12,11 @@ const hostname = 'localhost';
 const port = 3000;
 
 // access and return static html files from public folder
+// middleware to use req body from the form
 app.use(express.static('public'))
+app.use(express.urlencoded({
+    extended: true
+}))
 
 // set view engine to ejs to read the ejs files
 app.set("view engine", "ejs")
