@@ -3,8 +3,9 @@ const express = require("express")
 const morgan = require('morgan')
 const app = express()
 
-// morgan middleware
+// middle ware should be defined at the top of the page to be used in all routes
 app.use(morgan('dev'));
+
 
 // set up host name and port
 const hostname = 'localhost';
@@ -12,6 +13,7 @@ const port = 3000;
 
 // set view engine to ejs to read the ejs files
 app.set("view engine", "ejs")
+
 
 // on first load run the index.ejs file and create a variable to send down
 app.get("/", (req, res) => {

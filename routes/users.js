@@ -2,6 +2,9 @@
 const express = require("express")
 const router = express.Router()
 
+// sets up middleware only for users route
+router.use(logger)
+
 // Order of the router matter. Put static routes about dynamically requested
 
 // GET for just '/users'
@@ -49,6 +52,10 @@ router.param("id", (req, res, next, id) => {
     next()
 })
 
+function logger(req, res, next) {
+    console.log(req.originalUrl)
+    next()
+}
 
 
 // export
