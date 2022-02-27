@@ -11,17 +11,12 @@ app.use(morgan('dev'));
 const hostname = 'localhost';
 const port = 3000;
 
+// access and return static html files from public folder
+app.use(express.static('public'))
+
 // set view engine to ejs to read the ejs files
 app.set("view engine", "ejs")
 
-
-// on first load run the index.ejs file and create a variable to send down
-app.get("/", (req, res) => {
-    console.log("here")
-    res.render('index', {
-        text: "world"
-    })
-})
 
 // import the user router from users.js
 const userRouter = require('./routes/users')
