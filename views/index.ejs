@@ -9,7 +9,9 @@
 </head>
 
 <body>
-    <h1>Hello</h1>
+    <!-- run code in server ejs notation. any render variables staved in locals.text-->
+
+    <h1>Hello <%= locals.text || "Default"  %></h1>
 </body>
 
 </html>

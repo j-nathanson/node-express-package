@@ -11,7 +11,9 @@ app.set("view engine", "ejs")
 app.get("/", (req, res) => {
     console.log("here")
     // can put methods like send,status,json on server 
-    res.render('index')
+    res.render('index', {
+        text: "world"
+    })
 })
 
 
