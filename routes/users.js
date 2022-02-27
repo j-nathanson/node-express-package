@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
 router
     .route('/:id')
     .get((req, res) => {
-        req.params.id
+        console.log(req.user)
         res.send(`Get user with ID: ${req.params.id}`)
     })
     .put((req, res) => {
@@ -34,6 +34,20 @@ router
         req.params.id
         res.send(`Delete user with ID: ${req.params.id}`)
     })
+
+const users = [{
+    name: "kyle"
+}, {
+    name: 'sally'
+}]
+
+// look for parameter of id and use value of the id to save as a property in the req object
+// param is type of middleware, param runs first
+router.param("id", (req, res, next, id) => {
+    req.user = users[id]
+    console.log(id)
+    next()
+})
 
 
 
