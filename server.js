@@ -1,6 +1,10 @@
 // import and create express server app
 const express = require("express")
+const morgan = require('morgan')
 const app = express()
+
+// morgan middleware
+app.use(morgan('dev'));
 
 // set up host name and port
 const hostname = 'localhost';
